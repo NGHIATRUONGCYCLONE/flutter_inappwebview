@@ -1880,6 +1880,8 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
         
         if let url = navigationAction.request.url {
             
+            iosCatchIgnoreLink(url: url);
+            
             if activateShouldOverrideUrlLoading && (options?.useShouldOverrideUrlLoading)! {
                 
                 let isForMainFrame = navigationAction.targetFrame?.isMainFrame ?? false
@@ -2686,6 +2688,13 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
             "iosWKNavigationType": navigationType.rawValue
         ]
         channel?.invokeMethod("shouldOverrideUrlLoading", arguments: arguments, result: result)
+    }
+    
+    public func iosCatchIgnoreLink(url: URL){
+        let arguments: [String: Any?] = [
+            "url": url.absoluteString,
+        ]
+        channel?.invokeMethod("iosCatchIgnoreLink", arguments: arguments)
     }
     
     public func onReceivedHttpAuthRequest(challenge: URLAuthenticationChallenge, result: FlutterResult?) {
