@@ -584,6 +584,11 @@ class InAppWebViewController {
         else if (_inAppBrowser != null)
           _inAppBrowser.onUpdateVisitedHistory(url, androidIsReload);
         return null;
+      case "iosCatchIgnoreLink":
+        String url = call.arguments["url"];
+        if (_webview != null && _webview.iosCatchIgnoreLink != null)
+          _webview.iosCatchIgnoreLink(this, url);
+        return null;
       case "onWebContentProcessDidTerminate":
         if (_webview != null &&
             _webview.iosOnWebContentProcessDidTerminate != null)
