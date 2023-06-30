@@ -81,7 +81,8 @@ class HeadlessInAppWebView implements WebView {
       this.initialData,
       this.initialHeaders,
       this.initialOptions,
-      this.contextMenu}) {
+      this.contextMenu,
+      this.iosCatchIgnoreLink}) {
     uuid = uuidGenerator.v4();
     webViewController = new InAppWebViewController(uuid, this);
   }
@@ -367,4 +368,8 @@ class HeadlessInAppWebView implements WebView {
   final void Function(
           InAppWebViewController controller, LoginRequest loginRequest)
       androidOnReceivedLoginRequest;
+
+  @override
+  void Function(InAppWebViewController controller, String url)
+    iosCatchIgnoreLink;
 }

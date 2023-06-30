@@ -621,6 +621,10 @@ abstract class WebView {
   ///Context menu which contains custom menu items to be shown when [ContextMenu] is presented.
   final ContextMenu contextMenu;
 
+  //This function to help ios catch every link and handle if them ignore.
+  final void Function(
+      InAppWebViewController controller, String url) iosCatchIgnoreLink;
+
   WebView(
       {this.windowId,
       this.onWebViewCreated,
@@ -679,5 +683,6 @@ abstract class WebView {
       this.initialData,
       this.initialHeaders,
       this.initialOptions,
-      this.contextMenu});
+      this.contextMenu,
+      this.iosCatchIgnoreLink});
 }
