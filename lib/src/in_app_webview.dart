@@ -335,7 +335,7 @@ class InAppWebView extends StatefulWidget implements WebView {
       androidOnReceivedLoginRequest;
 
   @override
-  void Function(InAppWebViewController controller, String url)
+  final void Function(InAppWebViewController controller, String url)
     iosCatchIgnoreLink;
 }
 
